@@ -1,3 +1,5 @@
+import isEqual from 'lodash/isEqual';
+
 export const _ = '_';
 
 export const pattern = (...rules) => result => ({ rules, result });
@@ -19,6 +21,6 @@ const matches = (rules, args) => {
 
     if (rule === _) return true;
 
-    return rule === args[index];
+    return isEqual(rule, args[index]);
   });
 };

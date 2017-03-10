@@ -53,4 +53,18 @@ describe('.match', () => {
     );
     expect(nullPattern(null)).toBe('Nothing');
   });
+
+  test('returns result when given arguement matches object pattern exactly', () => {
+    const objectPattern = match(
+      pattern({ hello: 'world' })('matched')
+    );
+    expect(objectPattern({ hello: 'world' })).toBe('matched');
+  });
+
+  test('returns result when given arguement matches array pattern exactly', () => {
+    const arrayPattern = match(
+      pattern([1, 2, 3])('matched')
+    );
+    expect(arrayPattern([1, 2, 3])).toBe('matched');
+  });
 });
