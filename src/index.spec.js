@@ -20,5 +20,16 @@ describe('.match', () => {
       pattern(1)(1)
     );
     expect(() => identity(1, 1)).toThrow('No patterns match given args: 1,1');
-  })
+  });
+
+  test('returns result of wildcard when called with anything', () => {
+    const all = match(
+      pattern(_)(1)
+    );
+
+    expect(all('hello')).toBe(1);
+    expect(all(['hello'])).toBe(1);
+    expect(all(100)).toBe(1);
+    expect(all({ hello: 'world' })).toBe(1);
+  });
 });
