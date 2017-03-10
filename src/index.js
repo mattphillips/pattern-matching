@@ -13,6 +13,10 @@ export const match = (...patterns) => (...args) => {
 
   const { result } = matchedPattern;
 
+  if (typeof result === 'function') {
+    return result(...args);
+  }
+
   return result;
 };
 

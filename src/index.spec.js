@@ -67,4 +67,11 @@ describe('.match', () => {
     );
     expect(arrayPattern([1, 2, 3])).toBe('matched');
   });
+
+  test('returns value returned from result when result is a function', () => {
+    const add = match(
+      pattern(_, _)((a, b) => a + b)
+    );
+    expect(add(1, 1)).toBe(2);
+  });
 });
