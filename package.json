@@ -1,0 +1,38 @@
+{
+  "name": "pattern-matching",
+  "version": "0.0.1",
+  "description": "An expressive pattern matching library",
+  "scripts": {
+    "coverage": "jest --coverage",
+    "prettier": "prettier 'src/**/*.js' --write --single-quote=true",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattphillips/pattern-matching.git"
+  },
+  "keywords": [
+    "pattern",
+    "matching"
+  ],
+  "author": "Matt Phillips (mattphillips)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattphillips/pattern-matching/issues"
+  },
+  "homepage": "https://github.com/mattphillips/pattern-matching#readme",
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "jest": "^19.0.2",
+    "prettier": "^0.22.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ]
+  }
+}
