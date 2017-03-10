@@ -32,4 +32,25 @@ describe('.match', () => {
     expect(all(100)).toBe(1);
     expect(all({ hello: 'world' })).toBe(1);
   });
+
+  test('returns result when given arguement matches string pattern exactly', () => {
+    const stringPattern = match(
+      pattern('hello')('world')
+    );
+    expect(stringPattern('hello')).toBe('world');
+  });
+
+  test('returns result when given arguement matches number pattern exactly', () => {
+    const numberPattern = match(
+      pattern(1)(0)
+    );
+    expect(numberPattern(1)).toBe(0);
+  });
+
+  test('returns result when given arguement matches null pattern exactly', () => {
+    const nullPattern = match(
+      pattern(null)('Nothing')
+    );
+    expect(nullPattern(null)).toBe('Nothing');
+  });
 });

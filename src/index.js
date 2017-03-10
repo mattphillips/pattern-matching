@@ -16,6 +16,9 @@ export const match = (...patterns) => (...args) => {
 
 const matches = (rules, args) => {
   return rules.every((rule, index) => {
-    return rule === _;
+
+    if (rule === _) return true;
+
+    return rule === args[index];
   });
 };
