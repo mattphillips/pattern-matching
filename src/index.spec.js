@@ -1,12 +1,13 @@
-import { pattern } from './';
+import { pattern, _ } from './';
 
 describe('.pattern', () => {
   test('returns a pattern object with given rules and result', () => {
-    expect(pattern(Function, 100, 'Hello')('World!')).toEqual({
+    expect(pattern(Function, 100, 'Hello', _)('World!')).toEqual({
       rules: [
         Function,
         100,
-        'Hello'
+        'Hello',
+        _
       ],
       result: 'World!'
     });
