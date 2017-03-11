@@ -5,6 +5,6 @@ const factorial = (n) => {
     pattern(0)(1),
     pattern(Number)(() => n * factorial(n - 1))
   )(n);
-}
+};
 
 export default factorial;

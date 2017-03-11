@@ -1,8 +1,8 @@
 import { match, pattern, _ } from '../../src';
 
-const map = (mapper, array) => match(
+const map = (fn, array) => match(
   pattern(_, [])([]),
-  pattern(Function, Array)(() => [mapper(array[0])].concat(map(mapper, array.slice(1))))
-)(mapper, array);
+  pattern(Function, Array)(() => [fn(array[0])].concat(map(fn, array.slice(1))))
+)(fn, array);
 
 export default map;
