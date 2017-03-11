@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "An expressive pattern matching library",
   "scripts": {
-    "coverage": "jest --coverage",
     "prettier": "prettier 'src/**/*.js' --write --single-quote=true",
-    "test": "jest"
+    "test": "jest",
+    "test:coveralls": "npm run test:coverage && cat ./coverage/lcov.info | coveralls",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "babel-jest": "^19.0.0",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
+    "coveralls": "^2.12.0",
     "jest": "^19.0.2",
     "prettier": "^0.22.0"
   },
