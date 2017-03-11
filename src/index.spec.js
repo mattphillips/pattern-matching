@@ -82,5 +82,10 @@ describe('.match', () => {
       const arrayMatch = match(pattern(Array)(true));
       expect(arrayMatch([1, 2, 3])).toBe(true);
     });
+
+    test('Date', () => {
+      const dateMatch = match(pattern(Date)(true));
+      expect(dateMatch(new Date())).toBe(true);
+    });
   });
 });

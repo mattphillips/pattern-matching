@@ -25,12 +25,15 @@ const matches = (rules, args) => {
     return rule === _
       || isEqual(rule, arguement)
       || isFunction(rule)
-        && isArrayConstructor(rule) && isArray(arguement);
+        && isArrayConstructor(rule) && isArray(arguement)
+        || isDateConstructor(rule) && isDate(arguement);
   });
 };
 
 const isFunction = fn => typeof fn === 'function';
 
 const isArrayConstructor = fn => fn.name === 'Array';
+const isDateConstructor = fn => fn.name === 'Date';
 
 const isArray = a => Array.isArray(a);
+const isDate = d => d instanceof Date;
