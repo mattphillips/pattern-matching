@@ -87,5 +87,10 @@ describe('.match', () => {
       const dateMatch = match(pattern(Date)(true));
       expect(dateMatch(new Date())).toBe(true);
     });
+
+    test('Map', () => {
+      const mapMatch = match(pattern(Map)(true));
+      expect(mapMatch(new Map())).toBe(true);
+    });
   });
 });
