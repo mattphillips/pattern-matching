@@ -33,39 +33,43 @@ describe('.match', () => {
     expect(all({ hello: 'world' })).toBe(1);
   });
 
-  test('returns result when given arguement matches string pattern exactly', () => {
-    const stringPattern = match(
-      pattern('hello')('world')
-    );
-    expect(stringPattern('hello')).toBe('world');
+  describe('returns result when given arguement is equal to primitive datatype pattern', () => {
+    test('string', () => {
+      const stringMatch = match(pattern('hello')('world'));
+      expect(stringMatch('hello')).toBe('world');
+    });
+
+    test('number', () => {
+      const numberMatch = match(pattern(1)(0));
+      expect(numberMatch(1)).toBe(0);
+    });
+
+    test('null', () => {
+      const nullMatch = match(pattern(null)('Nothing'));
+      expect(nullMatch(null)).toBe('Nothing');
+    });
+
+    test('undefined', () => {
+      const undefinedMatch = match(pattern(undefined)('empty'));
+      expect(undefinedMatch(undefined)).toBe('empty');
+    });
+
+    test('boolean', () => {
+      const booleanMatch = match(pattern(true)(false));
+      expect(booleanMatch(true)).toBe(false);
+    });
   });
 
-  test('returns result when given arguement matches number pattern exactly', () => {
-    const numberPattern = match(
-      pattern(1)(0)
-    );
-    expect(numberPattern(1)).toBe(0);
-  });
+  describe('returns result when given arguement is deeply equal to object datatype pattern', () => {
+    test('object', () => {
+      const objectMatch = match(pattern({ hello: 'world' })('matched'));
+      expect(objectMatch({ hello: 'world' })).toBe('matched');
+    });
 
-  test('returns result when given arguement matches null pattern exactly', () => {
-    const nullPattern = match(
-      pattern(null)('Nothing')
-    );
-    expect(nullPattern(null)).toBe('Nothing');
-  });
-
-  test('returns result when given arguement matches object pattern exactly', () => {
-    const objectPattern = match(
-      pattern({ hello: 'world' })('matched')
-    );
-    expect(objectPattern({ hello: 'world' })).toBe('matched');
-  });
-
-  test('returns result when given arguement matches array pattern exactly', () => {
-    const arrayPattern = match(
-      pattern([1, 2, 3])('matched')
-    );
-    expect(arrayPattern([1, 2, 3])).toBe('matched');
+    test('array', () => {
+      const arrayMatch = match(pattern([1, 2, 3])('matched'));
+      expect(arrayMatch([1, 2, 3])).toBe('matched');
+    });
   });
 
   test('returns value returned from result when result is a function', () => {
