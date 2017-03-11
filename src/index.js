@@ -13,18 +13,14 @@ export const match = (...patterns) => (...args) => {
 
   const { result } = matchedPattern;
 
-  if (typeof result === 'function') {
+  if (typeof result === 'function')
     return result(...args);
-  }
 
   return result;
 };
 
 const matches = (rules, args) => {
   return rules.every((rule, index) => {
-
-    if (rule === _) return true;
-
-    return isEqual(rule, args[index]);
+    return rule === _ || isEqual(rule, args[index]);
   });
 };
