@@ -13,7 +13,7 @@ export const match = (...patterns) => (...args) => {
 
   const { result } = matchedPattern;
 
-  if (typeof result === 'function')
+  if (isFunction(result))
     return result(...args);
 
   return result;
@@ -21,6 +21,16 @@ export const match = (...patterns) => (...args) => {
 
 const matches = (rules, args) => {
   return rules.every((rule, index) => {
-    return rule === _ || isEqual(rule, args[index]);
+    const arguement = args[index];
+    return rule === _
+      || isEqual(rule, arguement)
+      || isFunction(rule)
+        && isArrayConstructor(rule) && isArray(arguement);
   });
 };
+
+const isFunction = fn => typeof fn === 'function';
+
+const isArrayConstructor = fn => fn.name === 'Array';
+
+const isArray = a => Array.isArray(a);

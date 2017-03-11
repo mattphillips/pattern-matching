@@ -73,9 +73,14 @@ describe('.match', () => {
   });
 
   test('returns value returned from result when result is a function', () => {
-    const add = match(
-      pattern(_, _)((a, b) => a + b)
-    );
+    const add = match(pattern(_, _)((a, b) => a + b));
     expect(add(1, 1)).toBe(2);
+  });
+
+  describe('returns result when given arguement matches constructor type', () => {
+    test('Array', () => {
+      const arrayMatch = match(pattern(Array)(true));
+      expect(arrayMatch([1, 2, 3])).toBe(true);
+    });
   });
 });
