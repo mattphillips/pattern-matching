@@ -25,10 +25,11 @@ const matches = (rules, args) => {
     return rule === _
       || isEqual(rule, arguement)
       || isFunction(rule)
-        && isArrayConstructor(rule) && isArray(arguement)
+        && (isArrayConstructor(rule) && isArray(arguement)
         || isDateConstructor(rule) && isDate(arguement)
         || isMapConstructor(rule) && isMap(arguement)
-        || isSetConstructor(rule) && isSet(arguement);
+        || isSetConstructor(rule) && isSet(arguement)
+        || typeof arguement === rule.name.toString().toLowerCase());
   });
 };
 

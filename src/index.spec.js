@@ -97,5 +97,35 @@ describe('.match', () => {
       const setMatch = match(pattern(Set)(true));
       expect(setMatch(new Set('hello'))).toBe(true);
     });
+
+    test('Object', () => {
+      const objectMatch = match(pattern(Object)(true));
+      expect(objectMatch({ hello: 'world' })).toBe(true);
+    });
+
+    test('Number', () => {
+      const numberMatch = match(pattern(Number)(true));
+      expect(numberMatch(100)).toBe(true);
+    });
+
+    test('String', () => {
+      const stringMatch = match(pattern(String)(true));
+      expect(stringMatch('hello')).toBe(true);
+    });
+
+    test('Boolean', () => {
+      const booleanMatch = match(pattern(Boolean)(true));
+      expect(booleanMatch(false)).toBe(true);
+    });
+
+    test('Symbol', () => {
+      const symbolMatch = match(pattern(Symbol)(true));
+      expect(symbolMatch(Symbol('hello'))).toBe(true);
+    });
+
+    test('Function', () => {
+      const functionMatch = match(pattern(Function)(true));
+      expect(functionMatch(() => {})).toBe(true);
+    });
   });
 });
