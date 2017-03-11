@@ -92,5 +92,10 @@ describe('.match', () => {
       const mapMatch = match(pattern(Map)(true));
       expect(mapMatch(new Map())).toBe(true);
     });
+
+    test('Set', () => {
+      const setMatch = match(pattern(Set)(true));
+      expect(setMatch(new Set('hello'))).toBe(true);
+    });
   });
 });

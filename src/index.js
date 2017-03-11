@@ -27,7 +27,8 @@ const matches = (rules, args) => {
       || isFunction(rule)
         && isArrayConstructor(rule) && isArray(arguement)
         || isDateConstructor(rule) && isDate(arguement)
-        || isMapConstructor(rule) && isMap(arguement);
+        || isMapConstructor(rule) && isMap(arguement)
+        || isSetConstructor(rule) && isSet(arguement);
   });
 };
 
@@ -36,7 +37,9 @@ const isFunction = fn => typeof fn === 'function';
 const isArrayConstructor = fn => fn.name === 'Array';
 const isDateConstructor = fn => fn.name === 'Date';
 const isMapConstructor = fn => fn.name === 'Map';
+const isSetConstructor = fn => fn.name === 'Set';
 
 const isArray = a => Array.isArray(a);
 const isDate = d => d instanceof Date;
 const isMap = m => m instanceof Map;
+const isSet = s => s instanceof Set;
